@@ -1,6 +1,6 @@
 #= require_self
 #= require_tree ./templates
-#= require_tree ./views 
+#= require_tree ./views
 #= require_tree ./routers
 
 window.App =
@@ -11,4 +11,4 @@ window.App =
 
   initialize: ->
     new App.Routers.MainRouter()
-    Backbone.history.start()
+    Backbone.history.start({pushState: true})

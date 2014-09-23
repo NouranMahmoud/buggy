@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # Design framework
 gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'handlebars_assets', '~> 0.18'
+gem 'autoprefixer-rails', '~> 3.1.0.20140911'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
