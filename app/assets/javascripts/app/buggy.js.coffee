@@ -12,4 +12,4 @@ window.App =
 
   initialize: ->
     new App.Routers.MainRouter()
-    Backbone.history.start({pushState: true})
+    Backbone.history.start()
