@@ -3,4 +3,4 @@ class App.Views.Footer extends Backbone.View
   template: HandlebarsTemplates['footer']
   render: ->
     @$el.html(@template())
-    @
+    this
