@@ -3,19 +3,23 @@ class App.Routers.MainRouter extends Backbone.Router
   routes:
     "": "index"
     "projects" : "project"
+    "projects/new": "newProject"
+
+  newProject: ->
+    @layoutViews()
+    @contentView.swapMain(new App.Views.NewProject({model: new App.Models.Project}))
+    @contentView.swapSide(new App.Views.Projects({collection: new App.Collections.Projects}))
   initialize: ->
     @headerView = new App.Views.Header()
     @contentView = new App.Views.Content()
     @footerView = new App.Views.Footer()
 
   index: ->
-    console.log "index"
     @layoutViews()
     @contentView.swapMain(new App.Views.Ads())
     @contentView.swapSide(new App.Views.News())
 
   project: ->
-    console.log "project"
     @layoutViews()
     @contentView.swapMain(new App.Views.Empty())
     @contentView.swapSide(new App.Views.Projects({collection: new App.Collections.Projects}))
