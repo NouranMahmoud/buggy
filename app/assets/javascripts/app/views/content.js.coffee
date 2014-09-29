@@ -7,12 +7,16 @@ class App.Views.Content extends Backbone.View
   initialize: ->
     @listenTo App.Vent, "project:create", @swapMainToNewProject
     @listenTo App.Vent, "project:new", @swapMainToNewProject
+    @listenTo App.Vent, "project:show", @swapMainToShowProject
 
   swapMainToNewProject: ->
     @swapMain(new App.Views.NewProject(model: new App.Models.Project))
     #@swapMain(new App.Views.Empty)
     Backbone.history.navigate("/projects/new")
 
+  swapMainToShowProject: (model) ->
+    console.log model
+    @swapMain(new App.Views.ProjectDetails({model: model}))
   swapMain: (v) ->
     @changeCurrentMainView(v)
     @$('#main-area').html(@currentMainView.render().el)
