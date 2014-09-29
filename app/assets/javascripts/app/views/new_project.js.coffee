@@ -3,7 +3,12 @@ class App.Views.NewProject extends Backbone.View
 
   events:
     "click button": "saveProject"
+  initialize: ->
+    @listenTo @model, "sync", @triggerProjectCreated
 
+  triggerProjectCreated: ->
+    console.log "project created triggered"
+    App.Vent.trigger "project:create", @model
   render: ->
     @$el.html(@template())
     this
