@@ -6,6 +6,7 @@ class App.Views.Project extends Backbone.View
   showProject: (e)->
     e.preventDefault
     App.Vent.trigger "project:show", @model
+    Backbone.history.navigate "/projects/" + @model.id
 
   render: ->
     @$el.html(@template(@model.toJSON()))
