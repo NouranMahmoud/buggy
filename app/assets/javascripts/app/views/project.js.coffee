@@ -2,6 +2,8 @@ class App.Views.Project extends Backbone.View
   template: HandlebarsTemplates["project"]
   events:
     "click a": "showProject"
+  initialize: ->
+    @listenTo @model, "destroy", @remove
 
   showProject: (e)->
     e.preventDefault

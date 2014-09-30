@@ -8,11 +8,16 @@ class App.Views.Content extends Backbone.View
     @listenTo App.Vent, "project:create", @swapMainToNewProject
     @listenTo App.Vent, "project:new", @swapMainToNewProject
     @listenTo App.Vent, "project:show", @swapMainToShowProject
+    @listenTo App.Vent, "project:destroy", @swapMainToEmpty
 
   swapMainToNewProject: ->
     @swapMain(new App.Views.NewProject(model: new App.Models.Project))
-    #@swapMain(new App.Views.Empty)
     Backbone.history.navigate("/projects/new")
+
+  swapMainToEmpty: ->
+    console.log "Empty view must be here"
+    @swapMain(new App.Views.Empty)
+    Backbone.history.navigate("/projects")
 
   swapMainToShowProject: (model) ->
     console.log model
