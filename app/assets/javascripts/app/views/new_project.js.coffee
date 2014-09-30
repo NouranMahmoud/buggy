@@ -7,7 +7,13 @@ class App.Views.NewProject extends Backbone.View
   initialize: ->
     @listenTo @model, "sync", @render
     @listenTo @model, "invalid", @renderErrors
+    @listenTo @model, "error", @parseErrorResponse
     @model.fetch() unless @model.isNew()
+
+  parseErrorResponse: (model, resp) ->
+    if resp and resp.responseText
+      errors = JSON.parse resp.responseText
+      @renderErrors(model, errors.errors)
 
   renderErrors: (model, errors) ->
     @$(".has-error").removeClass("has-error")
